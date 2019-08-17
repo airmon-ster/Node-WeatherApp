@@ -11,6 +11,7 @@ const validator = require('validator')
 
 
 const app = express()
+const port = process.env.PORT || 3000
 
 
 //define paths for express config
@@ -76,16 +77,6 @@ app.get('/weather', (req, res) => {
     })
     })
 
-// app.get('/products', (req, res) => {
-//     if (!req.query.search){
-//         return res.send({
-//             error: 'No search term provided'
-//         })
-//     }
-//     res.send({
-//         products: []
-//     })
-// })
 
 app.get('/help/*', (req, res) => {
     res.render('404', {
@@ -103,10 +94,6 @@ app.get('*', (req, res) => {
     })
 })
 
-//airmonster.com
-//airmonster.com/help
-//app.com/about
-
-app.listen(3000, "127.0.0.1", () => {
-    console.log('Server up and running on port 3000')
+app.listen(port, "0.0.0.0", () => {
+    console.log('Server up and running on port ' + port)
 })
