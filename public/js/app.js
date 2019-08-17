@@ -7,7 +7,13 @@ const search = document.querySelector('input')
 const messageOne = document.querySelector('#messageOne')
 const messageTwo = document.querySelector('#messageTwo')
 
-
+const sanitize =  (a) => {
+    var b = "";
+    for (var i = 0; i < a.length; i++) {
+      b += "&#x"+a.charCodeAt(i).toString(16)+";"
+    }
+    return b;
+  }
 
 
 weatherForm.addEventListener('submit', (event) => {
@@ -16,7 +22,7 @@ weatherForm.addEventListener('submit', (event) => {
     messageOne.textContent = ''
     messageTwo.textContent = ''
 
-    const location = search.value
+    const location = sanitize(search.value)
 
     messageOne.textContent = 'Loading...'
 
